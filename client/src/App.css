@@ -9,6 +9,9 @@ body {
 .App {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .typing-effect {
@@ -25,7 +28,8 @@ body {
   margin: 20px 0;
 }
 
-.menu-button {
+.menu-button,
+.language-button {
   background-color: black;
   border: 1px solid green;
   color: green;
@@ -36,7 +40,8 @@ body {
   cursor: pointer;
 }
 
-.menu-button:hover {
+.menu-button:hover,
+.language-button:hover {
   background-color: green;
   color: black;
 }
@@ -71,4 +76,9 @@ body {
 .cursor {
   display: inline-block;
   width: 10px;
+}
+
+.language-select {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
