@@ -1,0 +1,74 @@
+body {
+  background-color: black;
+  color: green;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 20px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.typing-effect {
+  font-size: 14px;
+  white-space: pre;
+}
+
+.menu-intro {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.menu-buttons {
+  margin: 20px 0;
+}
+
+.menu-button {
+  background-color: black;
+  border: 1px solid green;
+  color: green;
+  padding: 5px 10px;
+  margin: 0 5px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background-color: green;
+  color: black;
+}
+
+.command-prompt {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.command-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.command-input {
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre;
+}
+
+.hidden-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.confirmation-text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+}
