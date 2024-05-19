@@ -8,7 +8,10 @@ const port = process.env.PORT || 3001;
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
+
 app.use(express.json());
 
 app.post('/api/generate', async (req, res) => {
@@ -20,19 +23,19 @@ app.post('/api/generate', async (req, res) => {
         const result = await model.generateContentStream(command);
 
         res.writeHead(200, {
-            'Content-Type': 'text/event-stream',
+            'Content-Type': 'application/json',
             'Cache-Control': 'no-cache',
             'Connection': 'keep-alive'
         });
 
+        let responseData = '';
         for await (const chunk of result.stream) {
             const chunkText = chunk.text();
             console.log(chunkText);
-            res.write(`data: ${chunkText}\n\n`);
+            responseData += chunkText;
         }
 
-        // EventStream の終了を示すデータを送信
-        res.write('data: [DONE]\n\n');
+        res.write(JSON.stringify({ text: responseData }));
         res.end();
 
     } catch (error) {
@@ -43,6 +46,10 @@ app.post('/api/generate', async (req, res) => {
             console.error('Error: Headers already sent, cannot send error response.');
         }
     }
+});
+
+app.get('/api/generate/stream', (req, res) => {
+    // Do nothing, this is just to maintain the connection with the client
 });
 
 app.listen(port, () => {
